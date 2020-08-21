@@ -1,0 +1,27 @@
+.messageRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.myMessageRow {
+  align-items: flex-end !important;
+}
+
+.aMessage {
+  background-color: lightblue;
+  padding: 0.4em;
+  border-radius: 20px;
+  margin-bottom: 1em;
+  word-wrap: break-word;
+  width: fit-content;
+  max-width: 60%;
+}
+
+.myMessageRow .aMessage {
+  background-color: lightgreen !important;
+}
+
+.name {
+  margin-bottom: 0.2em;
+}
