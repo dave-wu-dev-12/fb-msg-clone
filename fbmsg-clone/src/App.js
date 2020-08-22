@@ -8,10 +8,12 @@ import {
   FormHelperText,
 } from "@material-ui/core";
 import Message from "./Message.js";
+import database from "./Firebase";
+import firebase from "firebase";
 
 function App() {
   const [input, setinput] = useState("");
-  const [messages, setmessages] = useState([{ name: "Todd", text: "Hello" }]);
+  const [messages, setmessages] = useState([]);
   const [username, setusername] = useState("");
 
   useEffect(() => {
@@ -20,13 +22,25 @@ function App() {
       setusername(name);
       alert(`Your name is now ${name}`);
     }
-
     return () => {};
+  }, []);
+
+  useEffect(() => {
+    database
+      .collection("messages")
+      .orderBy("time", "asc")
+      .onSnapshot((snapshot) =>
+        setmessages(snapshot.docs.map((doc) => doc.data()))
+      );
   }, []);
 
   const sendMessage = (event) => {
     event.preventDefault();
-    setmessages([...messages, { name: username, text: input }]);
+    database.collection("messages").add({
+      name: username,
+      text: input,
+      time: firebase.firestore.FieldValue.serverTimestamp(),
+    });
     setinput("");
   };
 
