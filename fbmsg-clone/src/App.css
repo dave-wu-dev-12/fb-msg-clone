@@ -7,21 +7,24 @@ html {
 }
 
 .messageInput {
-  position: fixed !important;
-  bottom: 0 !important;
-  display: flex !important;
-  width: 100% !important;
-  flex-direction: row !important;
-  align-items: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  z-index: 100;
+  background-color: white;
 }
 
-.messageInput .input {
-  flex: 1;
+.formcontrol {
+  display: flex !important;
+  flex-direction: row !important;
+}
+.input {
+  flex: 1 !important;
 }
 
 .messageContainer {
   padding: 1em 0.5em;
-  padding-bottom: 1.5em;
+  padding-bottom: 3em;
   max-width: 600px;
   width: 90%;
   margin: 0 auto;

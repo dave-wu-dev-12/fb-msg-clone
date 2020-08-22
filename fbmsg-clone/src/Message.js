@@ -1,13 +1,13 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import "./Message.css";
 
-function Message({ msg, myMsg }) {
+const Message = forwardRef(({ msg, myMsg }, ref) => {
   return (
-    <div className={`messageRow ${myMsg && `myMessageRow`}`}>
-      <h6 className="name">{msg.name}</h6>
+    <div ref={ref} className={`messageRow ${myMsg && `myMessageRow`}`}>
+      {!myMsg && <h6 className="name">{msg.name}</h6>}
       <p className="aMessage">{msg.text}</p>
     </div>
   );
-}
+});
 
 export default Message;
